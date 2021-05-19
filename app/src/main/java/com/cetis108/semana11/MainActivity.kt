@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.Toast
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -29,13 +30,22 @@ class MainActivity : AppCompatActivity() {
                 startActivity(intent)
             }
             R.id.itemMenuMainTelefonia -> {
-                TODO("Not implemented yet")
+                val intent = Intent(this, PhoneActivity::class.java)
+                startActivity(intent)
             }
             R.id.itemMenuMainCamara -> {
-                TODO("Not implemented yet")
+                val intent = Intent("android.media.action.IMAGE_CAPTURE")
+
+                try {
+                    startActivity(intent)
+                } catch (ex: Exception) {
+                    ex.printStackTrace()
+                    Toast.makeText(this, "Error: ${ex.toString()}", Toast.LENGTH_SHORT).show()
+                }
             }
             R.id.itemMenuMainRegistro -> {
-                TODO("Not implemented yet")
+                val intent = Intent(this, Contact1Activity::class.java)
+                startActivity(intent)
             }
         }
         return super.onOptionsItemSelected(item)
